@@ -193,7 +193,7 @@ class New_data():
         return df5
     
 # 6. 인기글 추천해주는 Data 
-def popular_weight_data(train)
+def popular_weight_data(train):
     popular = train.groupby("article_id").nunique().readers_id.sort_values(ascending=False)
     for i in popular.index:
         train.loc[train["article_id"]== i,"popular_weight"] = popular[i]
