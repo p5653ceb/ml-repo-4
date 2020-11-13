@@ -15,12 +15,12 @@
 ![image](https://user-images.githubusercontent.com/67793544/99053243-42484f00-25dc-11eb-8b86-086df3ee3255.png)
 
 ### *1st modeling* 
-### >contents based and Collaborative filtering for all users
+### contents based and Collaborative filtering for all users
 - Content-based recommendation and collaborative filtering methods were attemped
 - Massive data makes analysis difficult
 
 ### *2nd modeling*
-### limit period
+### period limitation
 - We find that within 14 days of the publication of the article, most consumption takes place.
 ![image](https://user-images.githubusercontent.com/67793544/99056115-2db88680-25dd-11eb-88dc-ddceabd6c51a.png)
 
