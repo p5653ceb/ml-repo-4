@@ -7,11 +7,13 @@
 
 ### *Introduction to Datasets*
 - Composed of five data sets
+
 ![image](https://user-images.githubusercontent.com/67793544/99050458-73744f80-25db-11eb-8b2e-d2048c17b560.png)
 ---
 ># project detail
 ### *project execution procedure*
 - Repeat EDA and modelling and upgrade model
+
 ![image](https://user-images.githubusercontent.com/67793544/99053243-42484f00-25dc-11eb-8b86-086df3ee3255.png)
 
 ### *1st modeling* 
