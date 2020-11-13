@@ -2,7 +2,7 @@
 ### *theme of project*
 - Recommend articles that fit users taste on the brunch platform.
 
-### *objective of a project*
+### *objective of project*
 - Implementing customized content recommendation system using Machine Learning.
 
 ### *Introduction to Datasets*
