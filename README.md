@@ -14,7 +14,7 @@
 ### *project execution procedure*
 - Repeat EDA and modelling and upgrade model
 
-![image](https://user-images.githubusercontent.com/67793544/99053243-42484f00-25dc-11eb-8b86-086df3ee3255.png)
+![image](https://user-images.githubusercontent.com/67793544/99219708-993e6600-2820-11eb-86b5-8582ae0cc554.png)
 
 ### *1st modeling* 
 ### contents based and Collaborative filtering for all users
