@@ -4,10 +4,10 @@ Brunch is a platform for connecting people who loves reading and making contents
 
 Now that many quality data is in Brunch, by using those, we need to make customized unique recommendation system.
 
-### objective of project
-- Implementing customized content recommendation system.
+### Objective of project
+- In this project, we developed content recommendation system. First of all, we downloaded data in kakao arena that hosts brunch recommendation contests
 
-### Data Sources : [Kakao Arena](https://arena.kakao.com/c/6)
+#### Data Sources : [Kakao Arena](https://arena.kakao.com/c/6)
     - contents
     - reader/ author information
     - user behavior
