@@ -24,7 +24,6 @@ Now that many quality data is in Brunch, by using those, we need to make customi
 
 
 #### 3. Recommendation algorithms
-- We tried to apply the recommendation system to each group in a different way   
-  - Users in group1 will recommended by their following author list, magazine list they've read and recent popular articles   
-  - Users in group2 will recommended by similarity of their taste with other users or authors using cosine similarity   
-  - Users in group3 read more 65 articles within 2weeks. we considered them to be realted. we will recommend them to recent & popular articles except for they read 
+- (1) following author article
+- (2) magazine article ratio
+- (3) popular-recent article
