@@ -24,10 +24,12 @@ Now that many quality data is in Brunch, by using those, we need to make customi
 
 
 #### 3. Recommendation algorithms
-- (1) Articles of following author
-    - 98 % of all users have author list who follow. And, each users follow an average of 8.6 authors. Therefore, we recommended users recent article published by author they subscribe to.
+(1) Articles of following author
+    - 98 % of all users have author list who follow.
+    - Each users follow an average of 8.6 authors. 
+    - Recommended users recent article published by author they subscribe to.
     
-- (2) Articles of magazine
-    - 
-- (3) Articles of Popular & Recent
+(2) Articles of magazine
+
+(3) Articles of Popular & Recent
 
