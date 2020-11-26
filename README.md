@@ -11,6 +11,10 @@ Now that many quality data is in Brunch, by using those, we need to make customi
 - data overview
     - articles(author, issue-date, title, contents, etc)
     - reader/ author information(read-date, read-article, following author list, etc) 
+    
+#### Dataset path settings
+    res
+     
 
 ### Project detail
 #### 1. Period limitation
