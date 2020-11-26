@@ -14,7 +14,7 @@ Now that many quality data is in Brunch, by using those, we need to make customi
 
 ### Project detail
 #### 1. Period limitation
-- we found that within 2 weeks of the publication of the article, most consumption took place. Users tended to read more recently published articles. Therefore, we decided to recommend articles to target users within two weeks of the issued date.
+- we found that within 2 weeks of the publication of the article, most consumption took place. Users tended to read more recently published articles. It was the result that reflects trends and seasonality of articles. Therefore, we decided to recommend articles to target users within two weeks of the issued date.
 
 #### 2. Target segmentation
 - The number of articles read by users during 1 months is divided into three groups using descriptive statistics.
@@ -41,5 +41,5 @@ Now that many quality data is in Brunch, by using those, we need to make customi
     - Recommend users articles published by author and consumed by reader with similar tastes. 
 
 - Articles of Popular & Recent
-    - 
+    - To resolve cold start, in case that the target users didn't read at least one article, we recommended popular & recent articles.
 
