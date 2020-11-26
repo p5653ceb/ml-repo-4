@@ -14,7 +14,7 @@ Now that many quality data is in Brunch, by using those, we need to make customi
 
 ### Project detail
 #### 1. Period limitation
-- It is found that within 2 weeks of the publication of the article, most consumption took place. In other words, users tended to read more recently published articles. So, We decided to recommend articles to target users within two weeks of the issued date.
+- we found that within 2 weeks of the publication of the article, most consumption took place. Users tended to read more recently published articles. Therefore, we decided to recommend articles to target users within two weeks of the issued date.
 
 #### 2. Target segmentation
 - The number of articles read by users during 1 months is divided into three groups using descriptive statistics.
