@@ -5,7 +5,7 @@ Brunch is a platform for connecting people who loves reading and making contents
 Now that many quality data is in Brunch, by using those, we need to make customized unique recommendation system.
 
 ### Objective of project
-- In this project, we developed content recommendation system. First of all, we downloaded data in kakao arena that hosts brunch recommendation contests. Then we 
+- In this project, we developed content recommendation system. First of all, we downloaded data in kakao arena that hosts brunch recommendation contests. Then we ~~
 
 #### Data Sources : [Kakao Arena](https://arena.kakao.com/c/6)
 - data overview
@@ -35,9 +35,9 @@ Now that many quality data is in Brunch, by using those, we need to make customi
     
 - Articles based on similar tastes(collaborative filtering)
     - collaborative filtering
-
-    i) reader-author :  
-    ii) reader-reader : 
+    - Tag list is the list that show content characteristic each articles has.
+    - By aggregating and vectorizing tag list in all articles that each users read(tf-tidf vercotizer, Doc2vec.), we deduced their unique tastes.
+    - Utlizing above tastes vector, we found the tastes similarity between reader and author, reader and reader.
 
 - Articles of Popular & Recent
     - 
