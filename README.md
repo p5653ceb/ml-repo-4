@@ -23,22 +23,22 @@ Now that many quality data is in Brunch, by using those, we need to make customi
     - group3 (65~ ): domain worker, expert, crawler, etc. ( who read above upper-fence number of articles)
 
 #### 3. Recommendation algorithms
-(1) Articles of following author
+- Articles of following author
     - 98 % of all users have author list who follow.
     - Each users follow an average of 8.6 authors. 
     - Recommend users recent article published by author they subscribe to.
     
-(2) Articles of magazine
+- Articles of magazine
     - Article in magazines tends to be more read by users than not in.
     - New users are likely to read articles in Brunch magazines.
     - Recommend users another popular&recent articles in magazine where they read articles at least once.
     
-(3) Articles based on similar tastes(collaborative filtering)
+- Articles based on similar tastes(collaborative filtering)
     - collaborative filtering
 
     i) reader-author :  
     ii) reader-reader : 
 
-(4) Articles of Popular & Recent
+- Articles of Popular & Recent
     - 
 
