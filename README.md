@@ -13,7 +13,17 @@ Now that many quality data is in Brunch, by using those, we need to make customi
     - reader/ author information(read-date, read-article, following author list, etc) 
     
 #### Dataset path settings
+
     res
+    ├── read
+    │   ├── ...
+    │   └── ...
+    └── predict
+    │   ├── dev.users
+    │   └── test.users
+    ├── magazine.json
+    ├── metadata.json
+    └── users.json
      
 
 ### Project detail
