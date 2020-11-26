@@ -1,8 +1,8 @@
+## Brunch-Article-Recommendation-System 
 <p align="center"> 
 <img src="https://user-images.githubusercontent.com/67793544/100312455-b7ad1a00-2ff5-11eb-87aa-75a57d8bfa07.png" width="15%">
 </p>
 
-## Brunch-Article-Recommendation-System 
 ### Problem Description
 Brunch is a platform for connecting people who loves reading and making contents. To make users find their taste, they designed article recommendation systems. For a better user experience, which can be made through personalized recommendation, they've been consistently developing their system. 
 
