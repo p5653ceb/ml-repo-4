@@ -5,7 +5,7 @@ Brunch is a platform for connecting people who loves reading and making contents
 Now that many quality data is in Brunch, by using those, we need to make customized unique recommendation system.
 
 ### Objective of project
-- In this project, we developed content recommendation system. First of all, we downloaded data in kakao arena that hosts brunch recommendation contests. Then we ~~
+- the purpose of this project is to develop personalized contents recommendation system. 
 
 #### Data Sources : [Kakao Arena](https://arena.kakao.com/c/6)
 - data overview
@@ -28,7 +28,7 @@ Now that many quality data is in Brunch, by using those, we need to make customi
 
 ### Project detail
 #### 1. Period limitation
-- we found that within 2 weeks of the publication of the article, most consumption took place. Users tended to read more recently published articles. It was the result that reflects trends and seasonality of articles. Therefore, we decided to recommend articles to target users within two weeks of the issued date.
+- we found that most consumption took place within 2 weeks of the publication of the article. Users tended to read more recently published articles. It was the result that reflects trends and seasonality of articles. Therefore, we decided to recommend articles to target users within two weeks of the issued date.
 
 #### 2. Target segmentation
 - The number of articles read by users during 1 months is divided into three groups using descriptive statistics.
@@ -48,7 +48,6 @@ Now that many quality data is in Brunch, by using those, we need to make customi
     - Recommend users another popular&recent articles in magazine where they read articles at least once.
     
 - Articles based on similar tastes(collaborative filtering)
-    - collaborative filtering
     - Tag list is the list that show content characteristic each articles has.
     - By aggregating and vectorizing tag list in all articles that each users read(tf-tidf vercotizer, Doc2vec.), we deduced their unique tastes.
     - Utlizing above tastes vector, we found the tastes similarity between reader and author, reader and reader.
