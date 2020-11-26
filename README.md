@@ -38,6 +38,7 @@ Now that many quality data is in Brunch, by using those, we need to make customi
     - Tag list is the list that show content characteristic each articles has.
     - By aggregating and vectorizing tag list in all articles that each users read(tf-tidf vercotizer, Doc2vec.), we deduced their unique tastes.
     - Utlizing above tastes vector, we found the tastes similarity between reader and author, reader and reader.
+    - Recommend users articles published by author and consumed by reader with similar tastes. 
 
 - Articles of Popular & Recent
     - 
