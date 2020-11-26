@@ -1,8 +1,6 @@
-
 <p align="center"> 
 <img src="https://user-images.githubusercontent.com/67793544/100312455-b7ad1a00-2ff5-11eb-87aa-75a57d8bfa07.png" width="15%">
 </p>
-
 
 ## Brunch-Article-Recommendation-System
 ### Problem Description
