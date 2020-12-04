@@ -59,3 +59,5 @@ Now that many quality data is in Brunch, by using those, we need to make customi
 - Articles of Popular & Recent
     - To resolve cold start, in case that the target users didn't read at least one article, we recommended popular & recent articles.
 
+#### 4. Result of recommendation
+<p align="left"><img src="https://user-images.githubusercontent.com/67793544/101129214-88755900-3644-11eb-8bb6-0cb91bec1e8c.png" width="60%"></p>
