@@ -73,39 +73,40 @@ class BasicRecommendation:
         return article_list
     
     
-    def morphs_analysis(self, data, dicpath):
-        mecab = Mecab(dicpath)
+    def morphs_analysis(self, data):
+        mecab = Mecab(self.path)
         ls = []
         for x in tqdm(range(len(data))):
             ls.append(mecab.morphs(data[x]))
         return list(chain.from_iterable(ls))
         
 
-    def tfidf_cosine(self, group_list, dicpath):
+    def tfidf_cosine(self, group_list):
         '''
         독자/작가별 태그리스트의 형태소를 분석하는 함수
         morphs_analysis 함수를 참조함
-        (input) train :형태소분석을 원하는 전체 dataframe
-        (output) reader_key_sum, author_key_sum : 
-        reader와 author의 키워드 분석결과가 컬럼으로 추가되어 데이터프레임으로 반환됨
+        (input) group_list : 분석대상 list
+        (output) reader_key_sum, author_key_sum, target_key_sum : 
+        reader와 author, target의 키워드 분석결과가 컬럼으로 추가되어 데이터프레임으로 반환됨
         '''
         tqdm.pandas()
         reader_key_sum = self.train.groupby('readers_id')['keyword_list'].agg(sum)
         reader_key_sum = reader_key_sum.reset_index()
         # 키워드 리스트가 없는 독자 삭제
         reader_key_sum = reader_key_sum[reader_key_sum['keyword_list'].apply(lambda x: len(x))!=0]
-        # 모듈 instance
-        reader_key_sum['morphs_list'] = reader_key_sum['keyword_list'].apply(lambda x: ('').join(self.morphs_analysis(x, dicpath)))
+        # 형태소 분석
+        reader_key_sum['morphs_list'] = reader_key_sum['keyword_list'].apply(lambda x: (' ').join(self.morphs_analysis(x)))
 
         author_key_sum = self.train.groupby('author_id')['keyword_list'].agg(sum)
         author_key_sum = author_key_sum.reset_index()
         # 키워드 리스트가 없는 독자 삭제
         author_key_sum = author_key_sum[author_key_sum['keyword_list'].apply(lambda x: len(x))!=0]
-        # 모듈 instance
-        author_key_sum['morphs_list'] = author_key_sum['keyword_list'].apply(lambda x: ('').join(self.morphs_analysis(x, dicpath)))
+        # 형태소 분석
+        author_key_sum['morphs_list'] = author_key_sum['keyword_list'].apply(lambda x: (' ').join(self.morphs_analysis(x)))
         group_list = pd.DataFrame(group_list, columns={'readers_id'})
         target_key_sum = reader_key_sum.merge(group_list, how='inner', on='readers_id')
-
+        
+        
         print('vectorizer...')
         tfidf_vectorizer = TfidfVectorizer()
         reader_vec = tfidf_vectorizer.fit_transform(reader_key_sum['morphs_list'])
@@ -119,20 +120,35 @@ class BasicRecommendation:
         reader_keyword_sim = cosine_similarity(reader_vec, target_vec)
         reader_keyword_sim_sorted_ind = reader_keyword_sim.argsort()[:,::-1]
         
-        reader_list = reader_key_sum[reader_key_sum['readers_id']==readers_id]
-        article_index = reader_list.index.values
-        similar_indexes = reader_keyword_sim_sorted_ind[article_index, 1:(top_n)+1]
-        similar_indexes = similar_indexes.reshape(-1)
-        
         print('author cosine_similarity...')        
         reader_author_keyword_sim = cosine_similarity(reader_vec, author_vec)
-        reader_author_keyword_sim_sorted_ind = author_keyword_sim.argsort()[:,::-1]
-        similar_indexes = reader_author_keyword_sim_sorted_ind[article_index, :(top_n)]
-        similar_indexes = similar_indexes.reshape(-1)
+        reader_author_keyword_sim_sorted_ind = reader_author_keyword_sim.argsort()[:,::-1]
+        reader_key_sum = reader_key_sum.reset_index(drop=True)
+        author_key_sum = author_key_sum.reset_index(drop=True)
+        
+        return reader_key_sum, author_key_sum, reader_keyword_sim_sorted_ind, reader_author_keyword_sim_sorted_ind
+        
 
-        return reader_key_sum.iloc[similar_indexes].readers_id.values.tolist(), author_key_sum.iloc[similar_indexes].author_id.values.tolist()
+    def cosine_similarity_list(self, target_id, reader_key_sum, author_key_sum, reader_keyword_sim_sorted_ind, reader_author_keyword_sim_sorted_ind, top_n=10):
+        '''
+        독자/작가별 태그리스트의 형태소를 분석하는 함수
+        morphs_analysis 함수를 참조함
+        (input) group_list : 분석대상 list
+        (output) reader_key_sum, author_key_sum : 
+        reader와 author의 키워드 분석결과가 컬럼으로 추가되어 데이터프레임으로 반환됨
+        '''
+        
+        reader_list = reader_key_sum[reader_key_sum['readers_id']==target_id]
+        article_index = reader_list.index.values
+        reader_similar_indexes = reader_keyword_sim_sorted_ind[article_index, 1:(top_n)+1]
+        reader_similar_indexes = reader_similar_indexes.reshape(-1)
+        
+        author_similar_indexes = reader_author_keyword_sim_sorted_ind[article_index, 1:(top_n)+1]
+        author_similar_indexes = author_similar_indexes.reshape(-1)
 
-    
+        return reader_key_sum.iloc[reader_similar_indexes].readers_id.values.tolist(), \
+    author_key_sum.iloc[author_similar_indexes].author_id.values.tolist()
+   
 
     def doc2vec(self):
         '''
@@ -257,17 +273,19 @@ class BrunchRecommendation(BasicRecommendation):
         return final_list
         
         
-    def total_recommendation_2(self, group_list, dicpath): 
+    def total_recommendation_2(self, group_list, reader_key_sum, author_key_sum, reader_keyword_sim_sorted_ind, reader_author_keyword_sim_sorted_ind): 
         
         final_list=[]
-        # group_2 추천 
-        readers, authors = self.tfidf_cosine(group_list, dicpath)
+        # group_2 추천
+        # df-idf형태소 분석, 코사인 유사도 유사 독자, 작가 index 정보 가져오기
+#         reader_key_sum, author_key_sum, reader_keyword_sim_sorted_ind, reader_author_keyword_sim_sorted_ind = self.tfidf_cosine(group_list)
         
         for target_id in tqdm(group_list):
             # (1.29~2.28) target user 가 읽은 글
-            
             already_read = self.target_info[self.target_info["readers_id"]==target_id][["article_id", "reg_dt", "popular_weight"]].values.tolist()
             already_read = list(set([tuple(read) for read in already_read]))
+            # id별로 유사한 reader, author list 뽑는 함수
+            readers, authors = self.cosine_similarity_list(target_id, reader_key_sum, author_key_sum, reader_keyword_sim_sorted_ind, reader_author_keyword_sim_sorted_ind)
             
             # target_id 당 추천
             target_recommend_list = []
@@ -279,7 +297,7 @@ class BrunchRecommendation(BasicRecommendation):
                 target_recommend_list.extend(author_recom_list)
                 
             ## 독자-독자 유사성을 통한 작가가 쓴 글 추천
-            for reader in tqdm(readers):
+            for reader in readers:
                 reader_recom = self.train[self.train.readers_id==reader]\
                 [["article_id", "reg_dt", "popular_weight"]].values.tolist()
                 reader_recom_list = list(set([tuple(article) for article in reader_recom]))
